@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhysioAssist — Ibrahim Khaled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ibrahim Khaled</a>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / PhysioAssist</div>
+
+  <header class="detail-header">
+    <h1>PhysioAssist</h1>
+    <div class="role mono">ASP.NET Core · Angular · Semantic Kernel · SQL Server</div>
+    <p class="lede">A multi-tenant clinic management platform for
+      physiotherapy practices, spanning a clinic-to-doctor hierarchy with
+      bilingual localization. The core of the work is the AI layer —
+      retrieval, transcription, scheduling agents, and documentation —
+      built on Semantic Kernel with routing across NVIDIA, Groq, and
+      Gemini.</p>
+  </header>
+
+  <section>
+    <div class="star-grid">
+      <div class="star-item">
+        <span class="star-label">situation</span>
+        <p>Doctors were writing session notes by hand and manually
+          searching paper files for a patient's history, and clinic
+          owners running more than one doctor had no single system to
+          manage them under one account.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">task</span>
+        <p>Build a platform where a doctor could dictate a session and get
+          it documented automatically, and where a clinic owner could run
+          several doctors and branches without duplicating setup for
+          each.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">action</span>
+        <p>For the mixed Arabic/English dictation, generic transcription
+          models struggled with the code-switching, so I routed that
+          specific case through Gemini Flash directly rather than a
+          general-purpose model, and used <code>Semantic Kernel</code> to
+          route everything else across NVIDIA, Groq, and Gemini by task
+          and cost. For the multi-clinic problem, I modeled the hierarchy
+          as Clinic → Doctor sharing one schema, and split scheduling into
+          an immutable <code>TreatmentSchedulePlan</code> versus a
+          mutable <code>PatientSessionPackage</code>, so changing a
+          session doesn't rewrite the original prescribed plan or lose
+          the audit trail.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">result</span>
+        <p>A doctor now gets an AI-drafted note straight from a voice
+          recording instead of typing it, sessions are embedded and
+          searchable across a patient's full history in SQL Server, and
+          one clinic account runs multiple doctors under a shared admin
+          dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture notes</h2>
+    <ul class="feature-list">
+      <li>Modular .NET monolith — ASP.NET Core backend, Angular
+        (zoneless, signals) frontend with PrimeNG and Tailwind CSS.</li>
+      <li>Scheduling model splits an immutable clinical prescription
+        (<code>TreatmentSchedulePlan</code>) from a mutable operational
+        child (<code>PatientSessionPackage</code>), with an audit table
+        tracking doctor reassignments separately from per-session
+        substitutions.</li>
+      <li>Embeddings via <code>gemini-embedding-001</code>, stored as
+        <code>SqlVector&lt;float&gt;</code> directly in SQL Server.</li>
+      <li>Auth is JWT with refresh tokens and Google OAuth, with
+        permission-based authorization for receptionist-level access.</li>
+      <li>Deployed on MonsterASP (API) and Vercel (frontend).</li>
+    </ul>
+    <div class="stack-line" style="margin-top: 22px;">
+      <span class="chip">ASP.NET Core</span>
+      <span class="chip">Angular</span>
+      <span class="chip">Semantic Kernel</span>
+      <span class="chip">SQL Server</span>
+      <span class="chip">QuestPDF</span>
+      <span class="chip">Brevo</span>
+    </div>
+     <div class="links-row" style="margin-top: 26px;">
+      <a class="btn small" href="https://physio-assist-gamma.vercel.app/" target="_blank" rel="noopener">View live demo</a>
+    </div>
+  </section>
+
+  <div class="project-nav">
+    <a href="index.html#projects">&larr; All projects</a>
+    <a href="waslah.html">Waslah &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITI Examination System — Ibrahim Khaled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ibrahim Khaled</a>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / ITI Examination System</div>
+
+  <header class="detail-header">
+    <h1>ITI Examination System</h1>
+    <div class="role mono">solo project</div>
+    <p class="lede">An ASP.NET Core MVC platform for running ITI courses
+      and online exams — covering course enrollment, exam authoring,
+      randomized assignment, timed attempts, and automatic grading across
+      three distinct roles.</p>
+  </header>
+
+  <section>
+    <div class="star-grid">
+      <div class="star-item">
+        <span class="star-label">situation</span>
+        <p>An exam published with too few questions, or a multiple-choice
+          question with two answers marked correct by mistake, gives
+          students an unfair or broken test — and that's exactly the kind
+          of bug that slips through when validation isn't enforced before
+          publishing.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">task</span>
+        <p>Build an exam authoring flow where an instructor physically
+          cannot publish a broken exam.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">action</span>
+        <p>Rather than trusting instructors to follow the rules manually,
+          I put the validation in the publish step itself: an exam needs
+          at least seven MCQ and three true/false questions, every MCQ
+          must have exactly four choices with exactly one marked correct,
+          and every true/false question needs a defined answer — publish
+          is blocked outright if any of that fails. Because grading a
+          full submission needed to happen as one atomic operation rather
+          than row-by-row EF Core calls, I ran delivery and grading
+          through <code>SQL Server</code> stored procedures and
+          table-valued parameters instead.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">result</span>
+        <p>An instructor can't accidentally publish an invalid exam, and
+          every submission gets graded automatically the moment it's
+          submitted, with results visible to the student immediately.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture notes</h2>
+    <ul class="feature-list">
+      <li>Exam delivery and submission run through SQL Server stored
+        procedures and table-valued parameters rather than plain EF Core
+        queries, for the heavier grading logic.</li>
+      <li>Domain model separates academic structure (branch, track,
+        course) from exam authoring (exam, question, choice) and from
+        attempts and grading (submission, student answer).</li>
+      <li>ASP.NET Core Identity drives role-specific sign-in redirects —
+        admin, instructor, and student each land on their own dashboard.</li>
+      <li>EF Core migrations apply automatically on startup.</li>
+    </ul>
+    <div class="stack-line" style="margin-top: 22px;">
+      <span class="chip">.NET 9</span>
+      <span class="chip">ASP.NET Core MVC</span>
+      <span class="chip">ASP.NET Identity</span>
+      <span class="chip">SQL Server</span>
+    </div>
+    <div class="links-row" style="margin-top: 26px;">
+      <a class="btn small" href="https://github.com/iibrahimshaban/ITIExaminationSystem" target="_blank" rel="noopener">View code on GitHub</a>
+    </div>
+  </section>
+
+  <div class="project-nav">
+    <a href="primemarket.html">&larr; PrimeMarket</a>
+    <a href="basket-survey.html">Survey Basket &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>

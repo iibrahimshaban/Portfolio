@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecommerce API — Ibrahim Khaled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ibrahim Khaled</a>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / Ecommerce API</div>
+
+  <header class="detail-header">
+    <h1>Ecommerce API</h1>
+    <div class="role mono">solo project</div>
+    <p class="lede">A layered ecommerce backend covering the full loop —
+      catalog, cart, checkout, and admin product management — built as a
+      clean separation between API, application, domain, and
+      infrastructure layers.</p>
+  </header>
+
+  <section>
+    <div class="star-grid">
+      <div class="star-item">
+        <span class="star-label">situation</span>
+        <p>On an earlier ecommerce project, business logic, validation,
+          and database code ended up tangled inside the same controllers,
+          so a small change in one place risked silently breaking
+          something unrelated elsewhere.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">task</span>
+        <p>Rebuild the same kind of system, but structured so a change to
+          one layer couldn't quietly break another.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">action</span>
+        <p>To stop persistence and business logic from bleeding into each
+          other, I split the solution into five projects — Api,
+          Application, Core, Infrastructure, Shared — so
+          <code>Infrastructure</code> has no dependency on the API layer
+          and <code>Application</code> never references <code>EF
+          Core</code> directly; the database can change without touching
+          a controller. To stop inconsistent error handling across
+          endpoints, every request runs through
+          <code>FluentValidation</code> first, and services return a
+          result object instead of throwing exceptions for expected
+          failures like "product not found" — so every controller handles
+          errors the same way instead of each catching different
+          exception types.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">result</span>
+        <p>Cart, checkout, and admin product management all share the
+          same validation and error-response pattern, and a daily
+          <code>Hangfire</code> job on a separate SQL Server store emails
+          members about new products without touching the main request
+          path.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture notes</h2>
+    <ul class="feature-list">
+      <li>JWT bearer auth with ASP.NET Identity, refresh tokens, email
+        confirmation, and password reset built in.</li>
+      <li>Result-based response pattern used consistently across services
+        and controllers, rather than exceptions for expected failures.</li>
+      <li>FluentValidation on every request, Mapster for DTO mapping.</li>
+      <li>Hangfire (separate SQL Server store) runs the scheduled product
+        notifications and exposes a protected dashboard.</li>
+      <li>Serilog structured logging throughout the request pipeline.</li>
+    </ul>
+    <div class="stack-line" style="margin-top: 22px;">
+      <span class="chip">.NET 9</span>
+      <span class="chip">EF Core</span>
+      <span class="chip">JWT</span>
+      <span class="chip">Hangfire</span>
+      <span class="chip">Mapster</span>
+      <span class="chip">Serilog</span>
+    </div>
+    <div class="links-row" style="margin-top: 26px;">
+      <a class="btn small" href="https://github.com/iibrahimshaban/Ecommerce" target="_blank" rel="noopener">View code on GitHub</a>
+    </div>
+  </section>
+
+  <div class="project-nav">
+    <a href="waslah.html">&larr; Waslah</a>
+    <a href="resort-hub.html">Resort Hub &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeMarket — Ibrahim Khaled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ibrahim Khaled</a>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / PrimeMarket</div>
+
+  <header class="detail-header">
+    <h1>PrimeMarket</h1>
+    <div class="role mono">3-member Agile team</div>
+    <p class="lede">A multi-vendor ecommerce platform where independent
+      sellers run their own storefronts within a shared marketplace, with
+      real-time updates and hosted media for product listings.</p>
+  </header>
+
+  <section>
+    <div class="star-grid">
+      <div class="star-item">
+        <span class="star-label">situation</span>
+        <p>In a shared marketplace, if vendor inventories and orders
+          aren't kept isolated, one seller's stock change can leak into
+          another's view — and if order status doesn't update live, a
+          buyer has to keep refreshing to see if anything moved.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">task</span>
+        <p>As part of a three-member Agile team, deliver the
+          customer-facing side — browsing, cart, wishlist, checkout,
+          order management — so each vendor's storefront stays isolated
+          and status updates reach the customer immediately.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">action</span>
+        <p>To get status changes to the customer without a refresh or
+          polling loop, I built the frontend in <code>Angular 21</code>
+          using Signals for local UI state and RxJS to consume a
+          <code>SignalR</code> event stream pushed straight from the
+          backend when an order updates. Checkout calls a
+          JWT-authenticated <code>ASP.NET Core (.NET 10)</code> API
+          following Clean Architecture, and product images are served
+          through <code>Cloudinary</code> rather than the app server, so
+          image requests don't compete with API traffic under load.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">result</span>
+        <p>Buyers see order-status changes appear live during checkout,
+          sellers manage listings independently within the same platform,
+          and payments run through <code>Stripe</code> end to end.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture notes</h2>
+    <ul class="feature-list">
+      <li>Background job processing via Hangfire for scheduled or deferred
+        marketplace tasks.</li>
+      <li>Payments integrated through Stripe's API rather than a
+        custom-built processor.</li>
+      <li>Media offloaded to Cloudinary instead of local or database
+        storage, keeping the app server stateless for images.</li>
+    </ul>
+    <div class="stack-line" style="margin-top: 22px;">
+      <span class="chip">Stripe</span>
+      <span class="chip">SignalR</span>
+      <span class="chip">Cloudinary</span>
+      <span class="chip">Hangfire</span>
+    </div>
+    <div class="links-row" style="margin-top: 26px;">
+      <a class="btn small" href="https://github.com/iibrahimshaban" target="_blank" rel="noopener">View code on GitHub</a>
+    </div>
+  </section>
+
+  <div class="project-nav">
+    <a href="resort-hub.html">&larr; Resort Hub</a>
+    <a href="iti-examination-system.html">ITI Examination System &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>

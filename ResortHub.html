@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resort Hub — Ibrahim Khaled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ibrahim Khaled</a>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / Resort Hub</div>
+
+  <header class="detail-header">
+    <h1>Resort Hub</h1>
+    <div class="role mono">solo project</div>
+    <p class="lede">A full-featured resort booking system built on
+      ASP.NET Core MVC, covering villa management, availability-aware
+      booking, and role-based access for staff and guests.</p>
+  </header>
+
+  <section>
+    <div class="star-grid">
+      <div class="star-item">
+        <span class="star-label">situation</span>
+        <p>A booking form that only checks a date range against a
+          calendar has no idea if that specific villa is already booked
+          for those dates — which is exactly how double-bookings happen
+          in simpler booking systems.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">task</span>
+        <p>Build a booking flow that could not accept a reservation on
+          top of an existing one, with staff and guests kept to separate
+          permissions.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">action</span>
+        <p>Instead of validating a date range in isolation, I check the
+          requested dates against every existing reservation tied to that
+          specific villa in <code>SQL Server</code> before confirming —
+          so availability is relative to that villa's own booking
+          history, not a general calendar check. Role-based authorization
+          on top of <code>ASP.NET Core Identity</code> then separates
+          guest, staff, and admin actions, so a guest account can't touch
+          villa records directly.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">result</span>
+        <p>Staff manage villas and bookings through one role-gated
+          system, live on MonsterASP, and every booking is checked
+          against that villa's existing reservations before confirmation
+          — closing off the most common cause of double-booking in
+          systems that skip that step.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture notes</h2>
+    <ul class="feature-list">
+      <li>Conventional ASP.NET Core MVC structure with server-rendered
+        Razor views.</li>
+      <li>Availability logic sits at the core of the booking flow, rather
+        than being a simple date-range check — it accounts for existing
+        reservations per villa.</li>
+      <li>Identity-driven authentication with role-based authorization
+        guarding staff and admin actions.</li>
+    </ul>
+    <div class="stack-line" style="margin-top: 22px;">
+      <span class="chip">ASP.NET Core MVC</span>
+      <span class="chip">ASP.NET Identity</span>
+      <span class="chip">SQL Server</span>
+    </div>
+    <div class="links-row" style="margin-top: 26px;">
+      <a class="btn small primary" href="https://resorthub.runasp.net/" target="_blank" rel="noopener">View live demo</a>
+      <a class="btn small" href="https://github.com/iibrahimshaban/Resort-Hub" target="_blank" rel="noopener">View code on GitHub</a>
+    </div>
+  </section>
+
+  <div class="project-nav">
+    <a href="ecommerce.html">&larr; Ecommerce API</a>
+    <a href="primemarket.html">PrimeMarket &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>

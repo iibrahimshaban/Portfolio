@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrahim Khaled — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ibrahim Khaled</a>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-copy">
+      <div class="tag mono">software engineer — cairo, egypt</div>
+      <h1>.NET Developer, <span class="accent">Agentic AI Engineer</span></h1>
+      <p class="lede">I build backend systems in ASP.NET Core and Entity
+        Framework on SQL Server, and extend them with AI through Semantic
+        Kernel, retrieval-augmented pipelines, and multi-model routing
+        across Gemini, Groq, and OpenAI. On the frontend I work in Angular
+        and TypeScript, which lets me take a project end to end —
+        architecture, implementation, and deployment — as I did on
+        <strong>PhysioAssist</strong>, <strong>PrimeMarket</strong>, and
+        <strong>Waslah</strong>. I hold a Bachelor's in Communication and
+        Electronics Engineering from Nile Academy, and I'm completing a
+        nine-month professional development program at the Information
+        Technology Institute (ITI), focused on web development technologies
+        and business intelligence–infused CRM.</p>
+      <div class="trace-rule"></div>
+      <div class="links-row">
+        <a class="btn primary" href="https://github.com/iibrahimshaban" target="_blank" rel="noopener">View GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/ibrahim-khaled-319548309/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="Ibrahim-Khaled-CV.pdf" target="_blank" rel="noopener">View CV</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="avatar">
+      <img src="my photo.jpg" alt="Ibrahim Khaled"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="avatar-fallback mono">IK</div>
+    </div>
+  </header>
+
+  <section id="skills">
+    <div class="section-head">
+      <h2>What I work with</h2>
+      <span class="sheet-ref mono">sheet.skills</span>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-panel">
+        <h3>backend / .net</h3>
+        <ul>
+          <li>ASP.NET Core (API &amp; MVC)</li>
+          <li>EF Core, code-first, migrations</li>
+          <li>JWT auth, ASP.NET Identity</li>
+          <li>Modular monolith architecture</li>
+        </ul>
+      </div>
+      <div class="skill-panel">
+        <h3>ai / rag</h3>
+        <ul>
+          <li>Semantic Kernel</li>
+          <li>Gemini, Groq, NVIDIA routing</li>
+          <li>Agentic orchestration</li>
+          <li>SQL Server vector search, ML.NET</li>
+        </ul>
+      </div>
+      <div class="skill-panel">
+        <h3>infrastructure</h3>
+        <ul>
+          <li>Hangfire background jobs</li>
+          <li>Serilog, health checks, rate limiting</li>
+          <li>SQL Server, Power BI, SSRS</li>
+          <li>Docker basics, gRPC</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="sheet-ref mono">sheet.projects</span>
+    </div>
+    <div class="project-grid">
+
+      <a class="project-card featured" href="physioassist.html">
+        <span class="ref mono">.net + semantic kernel</span>
+        <h4>PhysioAssist</h4>
+        <p>Multi-tenant physiotherapy clinic platform with a full AI layer —
+          retrieval pipelines, agent orchestration, and multi-model routing
+          across Gemini, Groq, and NVIDIA.</p>
+        <div class="stack-line">
+          <span class="chip">ASP.NET Core</span>
+          <span class="chip">Semantic Kernel</span>
+          <span class="chip">RAG</span>
+          <span class="chip">Angular</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="waslah.html">
+        <span class="ref mono">no. waslah</span>
+        <h4>Waslah</h4>
+        <p>Transportation and route-planning API with station lookup,
+          chained routes, ride requests, and an ML.NET fare predictor.</p>
+        <div class="stack-line">
+          <span class="chip">.NET 9</span>
+          <span class="chip">ML.NET</span>
+          <span class="chip">Hangfire</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="ecommerce.html">
+        <span class="ref mono">no. ecommerce</span>
+        <h4>Ecommerce API</h4>
+        <p>Layered ecommerce backend — catalog, cart, checkout, and admin
+          product management with background notifications.</p>
+        <div class="stack-line">
+          <span class="chip">.NET 9</span>
+          <span class="chip">EF Core</span>
+          <span class="chip">JWT</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="resort-hub.html">
+        <span class="ref mono">no. resort-hub</span>
+        <h4>Resort Hub</h4>
+        <p>Villa booking system with role-based authorization and
+          availability logic, deployed on ASP.NET Core MVC.</p>
+        <div class="stack-line">
+          <span class="chip">ASP.NET Core MVC</span>
+          <span class="chip">Identity</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="primemarket.html">
+        <span class="ref mono">no. primemarket</span>
+        <h4>PrimeMarket</h4>
+        <p>Multi-vendor ecommerce platform with real-time updates and
+          media handling for vendor storefronts.</p>
+        <div class="stack-line">
+          <span class="chip">Stripe</span>
+          <span class="chip">SignalR</span>
+          <span class="chip">Cloudinary</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="ITIExaminationSystem.html">
+        <span class="ref mono">no. iti-exams</span>
+        <h4>ITI Examination System</h4>
+        <p>Exam platform for admins, instructors, and students — authoring,
+          randomized assignment, timed attempts, auto-grading.</p>
+        <div class="stack-line">
+          <span class="chip">ASP.NET MVC</span>
+          <span class="chip">SQL Server</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="BasketSurvay.html">
+        <span class="ref mono">no. basket-survey</span>
+        <h4>Survey Basket</h4>
+        <p>Poll creation and voting API with permissioned roles, results
+          breakdowns, and scheduled notifications.</p>
+        <div class="stack-line">
+          <span class="chip">.NET 9</span>
+          <span class="chip">Hangfire</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <h2>Path so far</h2>
+      <span class="sheet-ref mono">sheet.experience</span>
+    </div>
+    <div class="exp-item">
+      <div class="when mono">now</div>
+      <div>
+        <h4>Co-Founder, PhysioAssist</h4>
+        <p>Building a physiotherapy clinic management platform as a
+          startup; own the architecture and AI infrastructure.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="when mono">complete</div>
+      <div>
+        <h4>ITI — Professional Development Program</h4>
+        <p>Finished the 9-month track in Egypt. PhysioAssist served as the
+          graduation project; several of the projects above were built
+          alongside it.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="when mono">freelance</div>
+      <div>
+        <h4>Khamsat &amp; Upwork</h4>
+        <p>Independent .NET and AI development work for clients outside my
+          full-time role.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Get in touch</h2>
+    <p>Open to backend and AI engineering work, and freelance projects in
+      .NET or applied AI. The fastest way to reach me is LinkedIn or GitHub.</p>
+    <div class="links-row">
+      <a class="btn primary" href="https://www.linkedin.com/in/ibrahim-khaled-319548309/" target="_blank" rel="noopener">Message on LinkedIn</a>
+      <a class="btn" href="https://github.com/iibrahimshaban" target="_blank" rel="noopener">github.com/iibrahimshaban</a>
+      <a class="btn" href="tel:+201553846559">+20 155 384 6559</a>
+      <a class="btn" href="mailto:iiibrahimkhaled@gmail.com">iiibrahimkhaled@gmail.com</a>
+    </div>
+    <div class="foot-meta">
+      <span>Ibrahim Khaled</span>
+      <span>cairo, egypt</span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

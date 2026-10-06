@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waslah — Ibrahim Khaled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ibrahim Khaled</a>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / Waslah</div>
+
+  <header class="detail-header">
+    <h1>Waslah</h1>
+    <div class="role mono">solo project</div>
+    <p class="lede">A transportation and route-planning backend that
+      connects passengers with stations, route segments, chained routes,
+      agency trips, and ride requests — plus a standalone ML.NET service
+      for fare prediction.</p>
+  </header>
+
+  <section>
+    <div class="star-grid">
+      <div class="star-item">
+        <span class="star-label">situation</span>
+        <p>Passengers travelling across a city often need to cross
+          several routes to reach a destination with no direct line, but
+          typical ride or delivery backends only support a fixed,
+          pre-defined route — there's no way to compute a path between
+          two arbitrary points, and no fare estimate before committing to
+          a ride.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">task</span>
+        <p>Build a way to plan a full trip on demand between any origin
+          and destination, and give the rider a cost estimate up front.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">action</span>
+        <p>Since no single predefined route could cover arbitrary
+          origin-destination pairs, I designed <strong>RCBA (Route
+          Chained Builder Algorithm)</strong>, which finds the nearest
+          station to a location and chains individual route segments
+          together into one multi-leg trip instead of requiring a fixed
+          route between two points. For the fare estimate, I split
+          prediction into its own <code>ML.NET</code> service so it could
+          be retrained and redeployed independently of the main
+          <code>.NET 9</code> API, taking distance, passenger count, and
+          payment type as input.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">result</span>
+        <p>A rider entering any two coordinates gets a chained,
+          multi-segment route back automatically instead of only a small
+          set of fixed routes, plus a fare estimate before booking — with
+          JWT auth, refresh tokens, and permission-based authorization
+          protecting admin operations underneath.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture notes</h2>
+    <ul class="feature-list">
+      <li>Layered structure — controllers, contracts (with FluentValidation),
+        services, persistence (EF Core + migrations), and a dedicated
+        authentication layer for JWT and permission policies.</li>
+      <li>Global exception handling returns consistent problem-details
+        responses across the API.</li>
+      <li>Structured request logging via Serilog.</li>
+      <li>Background processing and a protected dashboard through
+        Hangfire.</li>
+      <li>Three-project solution: the main API (.NET 9), the fare
+        prediction service (.NET 8), and a supporting AI/model
+        integration library.</li>
+    </ul>
+    <div class="stack-line" style="margin-top: 22px;">
+      <span class="chip">.NET 9</span>
+      <span class="chip">EF Core</span>
+      <span class="chip">ML.NET</span>
+      <span class="chip">Hangfire</span>
+      <span class="chip">FluentValidation</span>
+      <span class="chip">Serilog</span>
+    </div>
+    <div class="links-row" style="margin-top: 26px;">
+      <a class="btn small" href="https://github.com/iibrahimshaban/Waslah" target="_blank" rel="noopener">View code on GitHub</a>
+    </div>
+  </section>
+
+  <div class="project-nav">
+    <a href="physioassist.html">&larr; PhysioAssist</a>
+    <a href="ecommerce.html">Ecommerce API &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>

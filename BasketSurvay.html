@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survey Basket — Ibrahim Khaled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Ibrahim Khaled</a>
+    <nav>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / Survey Basket</div>
+
+  <header class="detail-header">
+    <h1>Survey Basket</h1>
+    <div class="role mono">solo project</div>
+    <p class="lede">A polling API for creating, publishing, voting on, and
+      analyzing surveys — with permissioned roles, scheduled email
+      notifications, and production concerns like rate limiting and
+      health checks built in from the start.</p>
+  </header>
+
+  <section>
+    <div class="star-grid">
+      <div class="star-item">
+        <span class="star-label">situation</span>
+        <p>Two members hitting submit on the same question at the same
+          moment is a race condition a simple voting endpoint doesn't
+          handle, and a public-facing poll API with no rate limiting is
+          an easy target for spam votes.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">task</span>
+        <p>Build a voting API that stays correct under concurrent access
+          and can't be trivially spammed.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">action</span>
+        <p>To stop simultaneous votes from racing each other, I put a
+          concurrency limiter directly on the voting endpoint, restricted
+          to the Member role, so competing requests queue instead of
+          both writing at once; fixed-window rate limiting elsewhere in
+          the API caps requests per IP and per user. Since results — by
+          response, by day, by question — get read far more often than
+          polls get created, I put a hybrid cache in front of those reads
+          instead of hitting <code>SQL Server</code> on every results
+          view.</p>
+      </div>
+      <div class="star-item">
+        <span class="star-label">result</span>
+        <p>The API serves poll results under repeated concurrent
+          read/write load without corrupting vote counts, and a daily
+          <code>Hangfire</code> job emails members automatically when a
+          poll they can vote on goes live.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture notes</h2>
+    <ul class="feature-list">
+      <li>JWT auth on top of ASP.NET Identity, with email confirmation
+        and password reset flows.</li>
+      <li>API versioning through an <code>X-api-Version</code> header —
+        the poll "current" endpoint has two live implementations side by
+        side.</li>
+      <li>Hangfire on its own SQL Server store runs the recurring
+        new-poll notification job.</li>
+      <li>FluentValidation, Mapster, and Serilog round out the request
+        pipeline; documentation served through Scalar/OpenAPI in
+        development.</li>
+    </ul>
+    <div class="stack-line" style="margin-top: 22px;">
+      <span class="chip">.NET 9</span>
+      <span class="chip">JWT</span>
+      <span class="chip">Hangfire</span>
+      <span class="chip">HybridCache</span>
+      <span class="chip">Serilog</span>
+    </div>
+    <div class="links-row" style="margin-top: 26px;">
+      <a class="btn small" href="https://github.com/iibrahimshaban/BasketSurvay" target="_blank" rel="noopener">View code on GitHub</a>
+    </div>
+  </section>
+
+  <div class="project-nav">
+    <a href="iti-examination-system.html">&larr; ITI Examination System</a>
+    <a href="index.html#projects">All projects &rarr;</a>
+  </div>
+
+</div>
+</body>
+</html>
